@@ -1,0 +1,95 @@
+﻿---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { MAISONLOOKS_URL, categories, finds, guides } from "../data/site";
+import { seoPages } from "../data/seo-pages";
+import { articles } from "../data/articles";
+---
+<BaseLayout>
+  <Header />
+  <main id="main">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow" data-i18n="homeEyebrow">USFans spreadsheet streetwear index</p>
+        <h1 data-i18n="homeTitle">USFans spreadsheet for streetwear finds and agent shopping links.</h1>
+        <p class="hero-text" data-i18n="homeIntro">
+          Browse USFans spreadsheet categories, W2C streetwear picks, QC notes, and agent-ready shopping guides before you build your next haul.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href={MAISONLOOKS_URL} target="_blank" rel="noopener noreferrer" data-i18n="searchStreetstyle">Search Streetstyle</a>
+          <a class="button secondary" href="/finds/" data-i18n="browseFinds">Browse Finds</a>
+        </div>
+      </div>
+      <div class="hero-panel" aria-label="Featured categories">
+        <div class="panel-top">
+          <span data-i18n="liveIndex">Live index</span>
+          <strong><span>{finds.length}</span> <span data-i18n="curatedLists">curated lists</span></strong>
+        </div>
+        <div class="category-grid">
+          {categories.map((category, index) => (
+            <a href={category.maisonlooksUrl} target="_blank" rel="noopener noreferrer">
+              <span data-i18n={`find${index + 1}Category`}>{category.name}</span>
+              <small data-i18n="openCategory">Open category</small>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="popularFinds">Popular finds</p>
+        <h2 data-i18n="spreadsheetPicks">Spreadsheet picks for fast scanning</h2>
+      </div>
+      <div class="cards">
+        {finds.slice(0, 3).map((item, index) => (
+          <article class="card">
+            <span data-i18n={`find${index + 1}Category`}>{item.category}</span>
+            <h3 data-i18n={`find${index + 1}Title`}>{item.title}</h3>
+            <p data-i18n={`find${index + 1}Note`}>{item.note}</p>
+            <strong>{item.price}</strong>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="split-section">
+      <div>
+        <p class="eyebrow" data-i18n="cleanerWorkflow">Cleaner workflow</p>
+        <h2 data-i18n="workflowTitle">Use this USFans spreadsheet index to scan categories, compare notes, and keep haul research organized.</h2>
+      </div>
+      <ul class="check-list">
+        {guides.map((guide, index) => <li data-i18n={`guideStep${index + 1}Title`}>{guide}</li>)}
+      </ul>
+    </section>
+
+    <section class="section compact-section">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="searchKeywords">Search keywords</p>
+        <h2 data-i18n="googleIntent">Landing pages built for Google intent</h2>
+      </div>
+      <div class="keyword-cloud large">
+        {seoPages.map((page) => <a href={`/${page.slug}/`} data-i18n={`seo.${page.slug}.keyword`}>{page.keyword}</a>)}
+      </div>
+    </section>
+
+    <section class="section compact-section">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="seoArticlesEyebrow">SEO articles</p>
+        <h2 data-i18n="homeArticlesTitle">Guides targeting USFans spreadsheet and W2C streetwear searches</h2>
+      </div>
+      <div class="article-grid home-articles">
+        {articles.slice(0, 4).map((article) => (
+          <article class="article-card">
+            <span data-i18n={`article.${article.slug}.keyword`}>{article.keyword}</span>
+            <h3><a href={`/articles/${article.slug}/`} data-i18n={`article.${article.slug}.title`}>{article.title}</a></h3>
+            <p data-i18n={`article.${article.slug}.description`}>{article.description}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+

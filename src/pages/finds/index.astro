@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { MAISONLOOKS_URL, finds } from "../../data/site";
+---
+<BaseLayout title="USFans Finds - Curated Streetwear Picks">
+  <Header />
+  <main id="main" class="page">
+    <section class="page-head">
+      <p class="eyebrow" data-i18n="navFinds">Finds</p>
+      <h1 data-i18n="findsTitle">Curated streetwear lists for USFans shoppers.</h1>
+      <p data-i18n="findsIntro">Scan categories, price bands, and buying notes before continuing to MaisonLooks for deeper discovery.</p>
+      <a class="button primary" href={MAISONLOOKS_URL} target="_blank" rel="noopener noreferrer" data-i18n="searchMaisonLooks">Search on MaisonLooks</a>
+    </section>
+    <section class="cards page-cards">
+      {finds.map((item, index) => (
+        <article class="card">
+          <span data-i18n={`find${index + 1}Category`}>{item.category}</span>
+          <h2 data-i18n={`find${index + 1}Title`}>{item.title}</h2>
+          <p data-i18n={`find${index + 1}Note`}>{item.note}</p>
+          <strong>{item.price}</strong>
+          <a href={item.maisonlooksUrl} target="_blank" rel="noopener noreferrer" data-i18n="openRelatedSearch">Open related search</a>
+        </article>
+      ))}
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

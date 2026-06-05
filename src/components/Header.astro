@@ -1,0 +1,43 @@
+---
+import { MAISONLOOKS_URL } from "../data/site";
+---
+<header class="site-header">
+  <nav class="nav" aria-label="Primary navigation">
+    <a class="brand" href="/">
+      <img
+        class="brand-logo"
+        src="/favicon.svg"
+        alt="USFans spreadsheet logo for streetwear finds, agent links, and curated shopping lists"
+        width="42"
+        height="42"
+      />
+      <span>USFans Index</span>
+    </a>
+    <div class="nav-links">
+      <a href="/" data-i18n="navHome">Home</a>
+      <a href="/finds/" data-i18n="navFinds">Finds</a>
+      <a href="/spreadsheet/" data-i18n="navSpreadsheet">Spreadsheet</a>
+      <a href="/guide/" data-i18n="navGuide">Guide</a>
+      <a href="/articles/" data-i18n="navArticles">Articles</a>
+      <a class="nav-cta" href={MAISONLOOKS_URL} target="_blank" rel="noopener noreferrer" data-i18n="navMaisonLooks">Open MaisonLooks</a>
+    </div>
+    <div class="nav-tools" aria-label="Site preferences">
+      <label class="language-label">
+        <span data-i18n="languageLabel">Language</span>
+        <select class="language-select" data-language-select aria-label="Language">
+          <option value="en">English</option>
+          <option value="de">Deutsch</option>
+          <option value="fr">Français</option>
+          <option value="es">Español</option>
+          <option value="it">Italiano</option>
+          <option value="nl">Nederlands</option>
+          <option value="pt">Português</option>
+        </select>
+      </label>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark mode">
+        <span data-theme-icon aria-hidden="true">Moon</span>
+        <span data-i18n="themeToggle">Dark</span>
+      </button>
+    </div>
+  </nav>
+</header>

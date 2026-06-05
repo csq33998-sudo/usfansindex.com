@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { MAISONLOOKS_URL, finds } from "../../data/site";
+---
+<BaseLayout title="USFans Spreadsheet - Agent Shopping Index">
+  <Header />
+  <main id="main" class="page">
+    <section class="page-head">
+      <p class="eyebrow" data-i18n="navSpreadsheet">Spreadsheet</p>
+      <h1 data-i18n="spreadsheetTitle">A cleaner spreadsheet-style index for streetwear hauls.</h1>
+      <p data-i18n="spreadsheetIntro">Use this page for USFans spreadsheet category rows, W2C notes, QC checks, price bands, and agent-ready haul planning.</p>
+    </section>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-i18n="tableCategory">Category</th>
+            <th data-i18n="tableList">List</th>
+            <th data-i18n="tablePrice">Price band</th>
+            <th data-i18n="tableBestUse">Best use</th>
+          </tr>
+        </thead>
+        <tbody>
+          {finds.map((item, index) => (
+            <tr>
+              <td data-i18n={`find${index + 1}Category`}>{item.category}</td>
+              <td><a href={item.maisonlooksUrl} target="_blank" rel="noopener noreferrer" data-i18n={`find${index + 1}Title`}>{item.title}</a></td>
+              <td>{item.price}</td>
+              <td data-i18n={`find${index + 1}Note`}>{item.note}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

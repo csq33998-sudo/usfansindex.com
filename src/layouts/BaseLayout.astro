@@ -1,0 +1,56 @@
+---
+const {
+  title = "USFans Index - Streetwear Finds, Agent Links & Spreadsheet Picks",
+  description = "USFans spreadsheet index for streetwear finds, W2C links, agent shopping notes, QC checks, and curated category guides.",
+  schema,
+} = Astro.props;
+
+const logoSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "USFans Index",
+  url: "https://usfansindex.com",
+  description,
+  publisher: {
+    "@type": "Organization",
+    name: "USFans Index",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://usfansindex.com/favicon.svg",
+      caption: "USFans spreadsheet logo for streetwear finds, agent links, and curated shopping lists",
+    },
+  },
+};
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <script is:inline>
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") document.documentElement.classList.add("dark");
+    </script>
+    <link rel="canonical" href={Astro.url} />
+    <link rel="stylesheet" href="/styles/global.css" />
+    {
+      schema && (
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+      )
+    }
+    <script type="application/ld+json" set:html={JSON.stringify(logoSchema)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+    <slot />
+    <script src="/scripts/site.js" defer></script>
+  </body>
+</html>
