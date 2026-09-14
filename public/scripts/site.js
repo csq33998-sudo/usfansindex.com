@@ -4,15 +4,26 @@ const category = document.querySelector('#category');
 const currency = document.querySelector('#currency');
 const rows = [...document.querySelectorAll('#product-table tbody tr')];
 let toastTimer;
-function filter() {
+let pageIndex = 0;
+const pageSize = 8;
+function filter(resetPage = true) {
+ if (resetPage) pageIndex = 0;
  const terms = search.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
- let count = 0;
- for (const row of rows) {
-  row.hidden = !((!category.value || row.dataset.category === category.value) && terms.every(term=>row.dataset.name.includes(term)));
-  if (!row.hidden) count++;
- }
- document.querySelector('#results').textContent = count+' of '+rows.length+' items';
+ const matches = rows.filter(row => (!category.value || row.dataset.category === category.value) && terms.every(term=>row.dataset.name.includes(term)));
+ const count = matches.length;
+ const pages = Math.max(1, Math.ceil(count / pageSize));
+ pageIndex = Math.min(pageIndex, pages - 1);
+ const visible = new Set(matches.slice(pageIndex * pageSize, (pageIndex + 1) * pageSize));
+ rows.forEach(row => { row.hidden = !visible.has(row); });
+ document.querySelector('#results').textContent = count ? 'Showing '+(pageIndex*pageSize+1)+'–'+Math.min((pageIndex+1)*pageSize,count)+' of '+count+' items' : '0 matching items';
  document.querySelector('#empty').hidden = count > 0;
+ const pagination = document.querySelector('#pagination');
+ if (pagination) {
+  pagination.hidden = count <= pageSize;
+  document.querySelector('#page-status').textContent = 'Page '+(pageIndex+1)+' of '+pages;
+  document.querySelector('#previous-page').disabled = pageIndex === 0;
+  document.querySelector('#next-page').disabled = pageIndex >= pages - 1;
+ }
  document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter === category.value)));
  document.querySelectorAll('a[data-category]').forEach(a=>a.setAttribute('aria-current',String(a.dataset.category === category.value)));
 }
@@ -25,6 +36,8 @@ document.querySelector('[data-reset]').addEventListener('click',()=>{reset();sea
 document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{category.value=button.dataset.filter;filter();}));
 document.querySelectorAll('a[data-category]').forEach(a=>a.addEventListener('click',()=>{search.value='';category.value=a.dataset.category;filter();document.querySelector('#database').scrollIntoView();}));
 window.addEventListener('hashchange',fromHash);
+document.querySelector('#previous-page')?.addEventListener('click',()=>{pageIndex--;filter(false);document.querySelector('#database').scrollIntoView();});
+document.querySelector('#next-page')?.addEventListener('click',()=>{pageIndex++;filter(false);document.querySelector('#database').scrollIntoView();});
 currency.addEventListener('change',()=>{
  document.querySelectorAll('[data-cny]').forEach(cell=>{
   const usd=currency.value==='USD', amount=Number(cell.dataset.cny)/(usd?7.2:1);

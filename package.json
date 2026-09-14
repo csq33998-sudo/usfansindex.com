@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev --host 127.0.0.1",
-    "build": "astro build",
+    "build": "node scripts/check-data.mjs && astro build",
     "preview": "astro preview --host 127.0.0.1",
-    "preview:local": "node scripts/local-preview.mjs"
+    "preview:local": "node scripts/local-preview.mjs",
+    "check:data": "node scripts/check-data.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",
