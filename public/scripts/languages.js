@@ -12,6 +12,9 @@
   let translatorPromise;
   let request = 0;
   const preferenceKey = 'usfans-language';
+  // Deferred scripts finish before DOMContentLoaded. Let catalog query results
+  // settle before Google scans the page, including when restoring a language.
+  const contentReady = document.readyState === 'complete' ? Promise.resolve() : new Promise(resolve => document.addEventListener('DOMContentLoaded', resolve, {once:true}));
   function remember(code) {
     try { localStorage.setItem(preferenceKey, code); } catch { /* Storage may be disabled. */ }
   }
@@ -115,6 +118,8 @@
     message.textContent = 'Loading Google Translate…';
     toggle.setAttribute('aria-busy', 'true');
     try {
+      await contentReady;
+      await window.usfansCatalogReady;
       const combo = await loadTranslator();
       if (currentRequest !== request) return;
       combo.value = code;

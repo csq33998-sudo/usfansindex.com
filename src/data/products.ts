@@ -1,4 +1,10 @@
-import snapshot from './source-details.json';
-export const categories = ['Sneakers','Hoodies','T-Shirts','Jackets','Accessories','Bags','Pants','Watches','Shorts','Knitwear'];
-export type Product = {id:string;name:string;category:string;priceCny:number;sourceUrl:string;sourceCategoryUrl:string;imageUrl:string;batch:string|null;qcUrl:string|null;w2cUrl:string;qcPhotos:string[];checkedAt:string};
-export const products: Product[] = snapshot;
+import snapshot from './catalog.json';
+import metadata from './catalog-meta.json';
+export const products = snapshot;
+export type Product = typeof products[number];
+export const categories = metadata.categories.filter(c => c.count > 0);
+export const catalogMeta = metadata;
+export const pageSize = 48;
+export const productsByCategory = new Map(categories.map(c => [c.slug, products.filter(p => p.category === c.slug)]));
+export const categoryName = (slug:string) => categories.find(c => c.slug === slug)?.name || slug;
+export const catalogPath = (slug='',page=1) => (slug ? '/categories/'+slug+'/' : '/database/') + (page > 1 ? 'page/'+page+'/' : '');

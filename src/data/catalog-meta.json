@@ -1,0 +1,183 @@
+{
+  "collectedAt": "2026-09-14T15:51:24.339Z",
+  "source": "https://streetstyle.maisonlooks.com/",
+  "expected": 44657,
+  "raw": 44657,
+  "unique": 44657,
+  "pages": 447,
+  "categories": [
+    {
+      "slug": "shoes",
+      "name": "Shoes",
+      "sources": [
+        "sneakers",
+        "boots",
+        "sandals-slippers",
+        "loafers-flats",
+        "heels"
+      ],
+      "description": "Sneakers, boots, sandals and everyday shoes.",
+      "count": 10937
+    },
+    {
+      "slug": "hoodies-sweaters",
+      "name": "Hoodies / Sweaters",
+      "sources": [
+        "hoodies-sweatshirts",
+        "sweaters-knits"
+      ],
+      "description": "Hoodies, sweatshirts, knits and cardigans.",
+      "count": 8484
+    },
+    {
+      "slug": "t-shirts",
+      "name": "T-Shirts",
+      "sources": [
+        "t-shirts",
+        "tank-tops"
+      ],
+      "description": "Graphic tees, everyday T-shirts and tanks.",
+      "count": 4672
+    },
+    {
+      "slug": "jackets",
+      "name": "Jackets",
+      "sources": [
+        "jackets",
+        "parkas-down-jackets",
+        "coats",
+        "blazers",
+        "outerwear"
+      ],
+      "description": "Light jackets, coats, blazers and winter layers.",
+      "count": 4616
+    },
+    {
+      "slug": "pants-shorts",
+      "name": "Pants / Shorts",
+      "sources": [
+        "trousers-pants",
+        "jeans",
+        "shorts",
+        "skirts",
+        "leggings",
+        "bottoms"
+      ],
+      "description": "Trousers, denim, shorts and other bottoms.",
+      "count": 5063
+    },
+    {
+      "slug": "headwear",
+      "name": "Headwear",
+      "sources": [
+        "headwear"
+      ],
+      "description": "Caps, beanies and hats.",
+      "count": 1319
+    },
+    {
+      "slug": "sets",
+      "name": "Sets",
+      "sources": [
+        "tracksuits",
+        "coord-sets",
+        "suits",
+        "sets-suits"
+      ],
+      "description": "Matching sets, tracksuits and suits.",
+      "count": 2942
+    },
+    {
+      "slug": "underwear",
+      "name": "Underwear / Swim",
+      "sources": [
+        "underwear-swim"
+      ],
+      "description": "Underwear, swimwear and base layers.",
+      "count": 78
+    },
+    {
+      "slug": "jerseys",
+      "name": "Jerseys",
+      "sources": [
+        "jerseys"
+      ],
+      "description": "Sports jerseys and team shirts.",
+      "count": 457
+    },
+    {
+      "slug": "accessories",
+      "name": "Accessories",
+      "sources": [
+        "eyewear",
+        "belts",
+        "jewelry-watches",
+        "socks-hosiery",
+        "scarves-ties",
+        "accessory-others",
+        "accessories"
+      ],
+      "description": "Eyewear, jewelry, watches, belts and finishing touches.",
+      "count": 2237
+    },
+    {
+      "slug": "bags",
+      "name": "Bags",
+      "sources": [
+        "bags-backpacks"
+      ],
+      "description": "Bags, backpacks, wallets and small leather goods.",
+      "count": 2323
+    },
+    {
+      "slug": "clothing",
+      "name": "Shirts / Dresses",
+      "sources": [
+        "shirts-blouses",
+        "polo-shirts",
+        "formal-dresses",
+        "casual-dresses",
+        "jumpsuits-rompers",
+        "dresses-one-piece",
+        "tops",
+        "clothing"
+      ],
+      "description": "Shirts, blouses, dresses and one-piece outfits.",
+      "count": 1142
+    },
+    {
+      "slug": "beauty",
+      "name": "Beauty / Fragrance",
+      "sources": [
+        "perfume",
+        "beauty-fragrance"
+      ],
+      "description": "Perfume and beauty finds from the source directory.",
+      "count": 199
+    },
+    {
+      "slug": "electronics",
+      "name": "Electronics",
+      "sources": [
+        "audio",
+        "phone-accessories",
+        "wearables",
+        "personal-care-devices",
+        "electronics"
+      ],
+      "description": "Audio, phone accessories, wearables and personal devices.",
+      "count": 188
+    },
+    {
+      "slug": "other",
+      "name": "Other Finds",
+      "sources": [],
+      "description": "Items whose source category is missing or outside the main groups.",
+      "count": 0
+    }
+  ],
+  "complete": true,
+  "verifiedPurchaseLinks": 80,
+  "missingImages": 0,
+  "inferredCategoryCount": 28
+}

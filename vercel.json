@@ -84,13 +84,73 @@
       "permanent": true
     },
     {
+      "source": "/categories/sneakers",
+      "destination": "/categories/shoes/",
+      "permanent": true
+    },
+    {
+      "source": "/categories/sneakers/",
+      "destination": "/categories/shoes/",
+      "permanent": true
+    },
+    {
+      "source": "/categories/hoodies",
+      "destination": "/categories/hoodies-sweaters/",
+      "permanent": true
+    },
+    {
+      "source": "/categories/hoodies/",
+      "destination": "/categories/hoodies-sweaters/",
+      "permanent": true
+    },
+    {
+      "source": "/categories/pants",
+      "destination": "/categories/pants-shorts/",
+      "permanent": true
+    },
+    {
+      "source": "/categories/pants/",
+      "destination": "/categories/pants-shorts/",
+      "permanent": true
+    },
+    {
+      "source": "/categories/shorts",
+      "destination": "/categories/pants-shorts/",
+      "permanent": true
+    },
+    {
+      "source": "/categories/shorts/",
+      "destination": "/categories/pants-shorts/",
+      "permanent": true
+    },
+    {
+      "source": "/categories/knitwear",
+      "destination": "/categories/hoodies-sweaters/",
+      "permanent": true
+    },
+    {
+      "source": "/categories/knitwear/",
+      "destination": "/categories/hoodies-sweaters/",
+      "permanent": true
+    },
+    {
+      "source": "/categories/watches",
+      "destination": "/categories/accessories/",
+      "permanent": true
+    },
+    {
+      "source": "/categories/watches/",
+      "destination": "/categories/accessories/",
+      "permanent": true
+    },
+    {
       "source": "/categories/denim",
-      "destination": "/categories/pants/",
+      "destination": "/categories/pants-shorts/",
       "permanent": true
     },
     {
       "source": "/categories/denim/",
-      "destination": "/categories/pants/",
+      "destination": "/categories/pants-shorts/",
       "permanent": true
     }
   ],

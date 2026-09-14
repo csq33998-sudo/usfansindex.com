@@ -1,0 +1,13 @@
+---
+import ProductPrice from './ProductPrice.astro';
+import {categoryName} from '../data/products';
+const {product:p}=Astro.props;
+---
+<article class="catalog-card" data-product-id={p.id}>
+ <a class="catalog-image" href={p.sourceUrl} target="_blank" rel="noopener noreferrer" aria-label={`View ${p.name} on the source site`}>
+  {p.imageUrl ? <img src={p.imageUrl} alt={p.name} width="300" height="300" loading="lazy" decoding="async" referrerpolicy="no-referrer"/> : <span class="missing-image">Image unavailable</span>}
+ </a>
+ <div class="catalog-card-body"><a class="catalog-category" href={`/categories/${p.category}/`}>{categoryName(p.category)}</a><h3><a href={p.sourceUrl} target="_blank" rel="noopener noreferrer">{p.name}</a></h3>
+ <div class="catalog-card-price">{typeof p.priceCny === 'number' && p.priceCny > 0 ? <ProductPrice cny={p.priceCny}/> : <span class="unavailable">Check source price</span>}<span class="catalog-qc">{p.hasSourceQc ? 'QC on source' : 'Source listing'}</span></div>
+ <div class="catalog-card-actions"><a class="button primary" href={p.w2cUrl || p.sourceUrl} target="_blank" rel="noopener noreferrer">{p.w2cUrl ? 'Open W2C ↗' : 'View item ↗'}</a>{p.w2cUrl && <button class="button secondary" type="button" data-copy={p.w2cUrl} aria-label={`Copy purchase link for ${p.name}`}>Copy</button>}</div>{p.qcPhotos?.length>0 ? <button class="catalog-qc-link" type="button" data-qc-photos={JSON.stringify(p.qcPhotos)}>View QC ({p.qcPhotos.length})</button> : <a class="catalog-qc-link" href={p.sourceUrl} target="_blank" rel="noopener noreferrer">Source details ↗</a>}</div>
+</article>

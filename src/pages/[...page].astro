@@ -1,11 +1,18 @@
 ---
 import SitePage from '../components/SitePage.astro';
-import {categories} from '../data/products';
+import CatalogPage from '../components/CatalogPage.astro';
+import {categories,products,pageSize} from '../data/products';
 export function getStaticPaths() {
- return [
-  ...['database','how-it-works','trust','faq'].map(section => ({params:{page:section},props:{section}})),
-  ...categories.map(name => ({params:{page:'categories/'+name.toLowerCase()},props:{section:'database',selectedCategory:name}})),
- ];
+ const paths = ['how-it-works','trust','faq'].map(section => ({params:{page:section},props:{section}}));
+ const groups = [{slug:'',count:products.length},...categories];
+ for (const category of groups) {
+  const base = category.slug ? 'categories/' + category.slug : 'database';
+  for (let pageNumber=1;pageNumber<=Math.ceil(category.count/pageSize);pageNumber++) {
+   const page = pageNumber===1 ? base : base+'/page/'+pageNumber;
+   paths.push({params:{page},props:{section:'database',categorySlug:category.slug,pageNumber}});
+  }
+ }
+ return paths;
 }
 ---
-<SitePage {...Astro.props} />
+{Astro.props.section==='database' ? <CatalogPage {...Astro.props}/> : <SitePage {...Astro.props} />}
