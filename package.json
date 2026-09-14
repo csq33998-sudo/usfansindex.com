@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev --host 127.0.0.1",
-    "build": "node scripts/check-data.mjs && astro build",
+    "build": "node scripts/check-data.mjs && astro build && node scripts/check-routes.mjs",
     "preview": "astro preview --host 127.0.0.1",
     "preview:local": "node scripts/local-preview.mjs",
     "check:data": "node scripts/check-data.mjs"

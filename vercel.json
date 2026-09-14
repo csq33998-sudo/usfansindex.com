@@ -5,142 +5,92 @@
   "redirects": [
     {
       "source": "/spreadsheet",
-      "destination": "/#database",
+      "destination": "/database/",
       "permanent": true
     },
     {
       "source": "/spreadsheet/",
-      "destination": "/#database",
+      "destination": "/database/",
       "permanent": true
     },
     {
       "source": "/finds",
-      "destination": "/#database",
+      "destination": "/database/",
       "permanent": true
     },
     {
       "source": "/finds/",
-      "destination": "/#database",
+      "destination": "/database/",
       "permanent": true
     },
     {
       "source": "/guide",
-      "destination": "/#how-it-works",
+      "destination": "/how-it-works/",
       "permanent": true
     },
     {
       "source": "/guide/",
-      "destination": "/#how-it-works",
+      "destination": "/how-it-works/",
       "permanent": true
     },
     {
       "source": "/usfans-spreadsheet",
-      "destination": "/#database",
+      "destination": "/database/",
       "permanent": true
     },
     {
       "source": "/usfans-spreadsheet/",
-      "destination": "/#database",
+      "destination": "/database/",
       "permanent": true
     },
     {
       "source": "/usfans-finds",
-      "destination": "/#database",
+      "destination": "/database/",
       "permanent": true
     },
     {
       "source": "/usfans-finds/",
-      "destination": "/#database",
+      "destination": "/database/",
       "permanent": true
     },
     {
       "source": "/usfans-agent",
-      "destination": "/#how-it-works",
+      "destination": "/how-it-works/",
       "permanent": true
     },
     {
       "source": "/usfans-agent/",
-      "destination": "/#how-it-works",
+      "destination": "/how-it-works/",
       "permanent": true
     },
     {
       "source": "/streetwear-spreadsheet",
-      "destination": "/#database",
+      "destination": "/database/",
       "permanent": true
     },
     {
       "source": "/streetwear-spreadsheet/",
-      "destination": "/#database",
+      "destination": "/database/",
       "permanent": true
     },
     {
       "source": "/maisonlooks-streetstyle",
-      "destination": "/#database",
+      "destination": "/database/",
       "permanent": true
     },
     {
       "source": "/maisonlooks-streetstyle/",
-      "destination": "/#database",
-      "permanent": true
-    },
-    {
-      "source": "/categories/sneakers",
-      "destination": "/#database?category=Sneakers",
-      "permanent": true
-    },
-    {
-      "source": "/categories/sneakers/",
-      "destination": "/#database?category=Sneakers",
-      "permanent": true
-    },
-    {
-      "source": "/categories/hoodies",
-      "destination": "/#database?category=Hoodies",
-      "permanent": true
-    },
-    {
-      "source": "/categories/hoodies/",
-      "destination": "/#database?category=Hoodies",
-      "permanent": true
-    },
-    {
-      "source": "/categories/jackets",
-      "destination": "/#database?category=Jackets",
-      "permanent": true
-    },
-    {
-      "source": "/categories/jackets/",
-      "destination": "/#database?category=Jackets",
+      "destination": "/database/",
       "permanent": true
     },
     {
       "source": "/categories/denim",
-      "destination": "/#database?category=Pants",
+      "destination": "/categories/pants/",
       "permanent": true
     },
     {
       "source": "/categories/denim/",
-      "destination": "/#database?category=Pants",
-      "permanent": true
-    },
-    {
-      "source": "/categories/bags",
-      "destination": "/#database?category=Bags",
-      "permanent": true
-    },
-    {
-      "source": "/categories/bags/",
-      "destination": "/#database?category=Bags",
-      "permanent": true
-    },
-    {
-      "source": "/categories/accessories",
-      "destination": "/#database?category=Accessories",
-      "permanent": true
-    },
-    {
-      "source": "/categories/accessories/",
-      "destination": "/#database?category=Accessories",
+      "destination": "/categories/pants/",
       "permanent": true
     }
   ],
@@ -158,5 +108,6 @@
         }
       ]
     }
-  ]
+  ],
+  "trailingSlash": true
 }

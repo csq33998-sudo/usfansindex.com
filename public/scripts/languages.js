@@ -125,7 +125,7 @@
       if (currentRequest !== request) return;
       message.textContent = 'Translation could not load. Please try again.';
       const url = new URL('https://translate.google.com/translate');
-      const pageUrl = new URL(location.pathname + location.search + location.hash, 'https://usfansindex.com');
+      const pageUrl = new URL(location.pathname + location.search, 'https://usfansindex.com');
       url.search = new URLSearchParams({ sl: 'en', tl: code, u: pageUrl.href });
       fallback.href = url.href;
       fallback.hidden = false;

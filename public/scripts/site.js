@@ -29,17 +29,38 @@ function filter(resetPage = true) {
  document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.filter === category.value)));
  document.querySelectorAll('a[data-category]').forEach(a=>a.setAttribute('aria-current',String(a.dataset.category === category.value)));
 }
-function reset(){search.value='';category.value='';filter();history.replaceState(null,'',location.pathname+location.search+'#database');}
-function fromHash(){if(location.hash.startsWith('#database?')){const value=new URLSearchParams(location.hash.split('?')[1]).get('category');category.value=[...category.options].some(o=>o.value===value)?value:'';filter();document.querySelector('#database').scrollIntoView();}}
-search.addEventListener('input',filter);
-category.addEventListener('change',()=>{filter();history.replaceState(null,'',location.pathname+location.search+'#database?category='+encodeURIComponent(category.value));});
+function updateUrl() {
+ const url = new URL(location.href);
+ url.hash = '';
+ if (search.value.trim()) url.searchParams.set('q', search.value.trim());
+ else url.searchParams.delete('q');
+ if (pageIndex > 0) url.searchParams.set('page', String(pageIndex + 1));
+ else url.searchParams.delete('page');
+ history.replaceState(null, '', url.pathname + url.search);
+}
+function chooseCategory(value) {
+ location.assign(value ? '/categories/' + value.toLowerCase() + '/' : '/database/');
+}
+function reset(){
+ if (category.dataset.categoryBase) { location.assign('/database/'); return; }
+ search.value='';category.value='';filter();updateUrl();
+}
+function fromUrl(){
+ const params = new URLSearchParams(location.search);
+ search.value = params.get('q') || '';
+ const page = Number(params.get('page'));
+ pageIndex = Number.isSafeInteger(page) && page > 0 ? page - 1 : 0;
+ filter(false);
+ updateUrl();
+}
+search.addEventListener('input',()=>{filter();updateUrl();});
+category.addEventListener('change',()=>chooseCategory(category.value));
 document.querySelector('#reset').addEventListener('click',reset);
 document.querySelector('[data-reset]').addEventListener('click',()=>{reset();search.focus();});
-document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{category.value=button.dataset.filter;filter();}));
-document.querySelectorAll('a[data-category]').forEach(a=>a.addEventListener('click',()=>{search.value='';category.value=a.dataset.category;filter();document.querySelector('#database').scrollIntoView();}));
-window.addEventListener('hashchange',fromHash);
-document.querySelector('#previous-page')?.addEventListener('click',()=>{pageIndex--;filter(false);document.querySelector('#database').scrollIntoView();});
-document.querySelector('#next-page')?.addEventListener('click',()=>{pageIndex++;filter(false);document.querySelector('#database').scrollIntoView();});
+document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>chooseCategory(button.dataset.filter)));
+window.addEventListener('popstate',fromUrl);
+document.querySelector('#previous-page')?.addEventListener('click',()=>{pageIndex--;filter(false);updateUrl();document.querySelector('#database').scrollIntoView();});
+document.querySelector('#next-page')?.addEventListener('click',()=>{pageIndex++;filter(false);updateUrl();document.querySelector('#database').scrollIntoView();});
 function notify(text){clearTimeout(toastTimer);const toast=document.querySelector('#toast');toast.textContent=text;toast.hidden=false;toastTimer=setTimeout(()=>{toast.hidden=true;toast.textContent='';},2400);}
 async function copyText(text){
  if(window.isSecureContext && navigator.clipboard?.writeText){try{await navigator.clipboard.writeText(text);return true;}catch{}}
@@ -58,6 +79,6 @@ document.addEventListener('click',async event=>{
  if(success){button.textContent='Copied!';notify('Copied!');setTimeout(()=>{button.textContent=label;button.disabled=false;},1800);}
  else{button.textContent=label;button.disabled=false;const dialog=document.querySelector('#manual-dialog'),input=document.querySelector('#manual-link');input.value=url.href;if(!dialog.open)dialog.showModal();input.focus();input.select();input.setSelectionRange(0,input.value.length);}
 });
-filter();fromHash();
+fromUrl();
 
 document.querySelectorAll("[data-gallery]").forEach(link=>link.addEventListener("click",event=>{const dialog=document.getElementById(link.dataset.gallery);if(dialog&&typeof dialog.showModal==="function"){event.preventDefault();dialog.showModal();}}));
