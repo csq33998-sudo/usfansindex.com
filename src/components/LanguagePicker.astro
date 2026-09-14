@@ -1,0 +1,26 @@
+---
+const languages = [
+  ['en', 'English'], ['de', 'Deutsch'], ['es', 'Espanol'], ['fr', 'Francais'],
+  ['it', 'Italiano'], ['pl', 'Polski'], ['pt', 'Portugues'], ['ro', 'Romana'],
+  ['sv', 'Svenska'], ['nl', 'Nederlands'], ['da', 'Dansk'], ['fi', 'Suomi'],
+  ['el', 'Greek'], ['cs', 'Cestina'], ['hu', 'Magyar'], ['bg', 'Bulgarian'],
+  ['sk', 'Slovencina'], ['hr', 'Hrvatski'], ['sl', 'Slovenscina'], ['lt', 'Lietuviu'],
+  ['lv', 'Latviesu'], ['et', 'Eesti'], ['ga', 'Gaeilge'], ['mt', 'Malti'],
+  ['zh-CN', 'Chinese Simplified'], ['ja', 'Japanese'], ['ko', 'Korean'],
+];
+---
+<div class="language-picker notranslate" translate="no" data-language-picker>
+  <button class="language-toggle" type="button" aria-expanded="false" aria-controls="language-panel" aria-label="Choose language" disabled>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></svg>
+    <span data-language-label>English</span>
+    <svg class="language-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m2 4 4 4 4-4"/></svg>
+  </button>
+  <div id="language-panel" class="language-panel" hidden>
+    <div class="language-grid" role="group" aria-label="Page language">
+      {languages.map(([code, label]) => <button type="button" data-language={code} aria-pressed={String(code === 'en')}>{label}</button>)}
+    </div>
+    <p class="language-credit">Automatic translation by Google</p>
+  </div>
+  <p class="language-feedback" role="status" hidden><span data-language-message></span> <a data-translation-fallback target="_blank" rel="noopener noreferrer" hidden>Open in Google Translate ↗</a></p>
+</div>
+<script src="/scripts/languages.js" is:inline defer></script>

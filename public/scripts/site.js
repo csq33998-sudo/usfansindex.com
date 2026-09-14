@@ -8,7 +8,10 @@ const pageSize = 8;
 function filter(resetPage = true) {
  if (resetPage) pageIndex = 0;
  const terms = search.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
- const matches = rows.filter(row => (!category.value || row.dataset.category === category.value) && terms.every(term=>row.dataset.name.includes(term)));
+ const matches = rows.filter(row => {
+  const searchable = (row.dataset.name + ' ' + row.querySelector('.product-name').textContent + ' ' + row.querySelector('[data-filter]').textContent).toLowerCase();
+  return (!category.value || row.dataset.category === category.value) && terms.every(term => searchable.includes(term));
+ });
  const count = matches.length;
  const pages = Math.max(1, Math.ceil(count / pageSize));
  pageIndex = Math.min(pageIndex, pages - 1);
@@ -19,7 +22,7 @@ function filter(resetPage = true) {
  const pagination = document.querySelector('#pagination');
  if (pagination) {
   pagination.hidden = count <= pageSize;
-  document.querySelector('#page-status').textContent = 'Page '+(pageIndex+1)+' of '+pages;
+  document.querySelector('#page-status').textContent = (pageIndex+1)+' / '+pages;
   document.querySelector('#previous-page').disabled = pageIndex === 0;
   document.querySelector('#next-page').disabled = pageIndex >= pages - 1;
  }
