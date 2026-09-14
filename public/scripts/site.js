@@ -1,7 +1,6 @@
 "use strict";
 const search = document.querySelector('#search');
 const category = document.querySelector('#category');
-const currency = document.querySelector('#currency');
 const rows = [...document.querySelectorAll('#product-table tbody tr')];
 let toastTimer;
 let pageIndex = 0;
@@ -38,13 +37,6 @@ document.querySelectorAll('a[data-category]').forEach(a=>a.addEventListener('cli
 window.addEventListener('hashchange',fromHash);
 document.querySelector('#previous-page')?.addEventListener('click',()=>{pageIndex--;filter(false);document.querySelector('#database').scrollIntoView();});
 document.querySelector('#next-page')?.addEventListener('click',()=>{pageIndex++;filter(false);document.querySelector('#database').scrollIntoView();});
-currency.addEventListener('change',()=>{
- document.querySelectorAll('[data-cny]').forEach(cell=>{
-  const usd=currency.value==='USD', amount=Number(cell.dataset.cny)/(usd?7.2:1);
-  const small=document.createElement('small');small.textContent=usd?'USD · estimate':'CNY';
-  cell.replaceChildren(document.createTextNode((usd?'≈ $':'¥')+amount.toFixed(2)),small);
- });
-});
 function notify(text){clearTimeout(toastTimer);const toast=document.querySelector('#toast');toast.textContent=text;toast.hidden=false;toastTimer=setTimeout(()=>{toast.hidden=true;toast.textContent='';},2400);}
 async function copyText(text){
  if(window.isSecureContext && navigator.clipboard?.writeText){try{await navigator.clipboard.writeText(text);return true;}catch{}}

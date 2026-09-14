@@ -1,0 +1,7 @@
+---
+interface Props { cny: number }
+const { cny } = Astro.props;
+// Illustrative conversion, disclosed below the database; not a live FX quote.
+const usd = cny / 7.2;
+---
+<span class="dual-price"><strong>¥{cny.toFixed(2)}</strong><span class="usd-price">≈${usd.toFixed(2)}</span></span>
