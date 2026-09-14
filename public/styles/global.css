@@ -7,7 +7,7 @@
 .purchase-actions{display:grid;gap:6px;min-width:140px}.purchase-actions .source-copy{margin-top:0;min-height:44px;display:flex;align-items:center;justify-content:center}
 .brand-icon{width:40px;height:40px;object-fit:contain;border-radius:8px;margin-right:7px;flex-shrink:0}@media(max-width:640px){.brand-icon{width:32px;height:32px;margin-right:4px}}
 
-/* Header language menu: two columns matching the language reference. */
+/* Compact language popover; the option list scrolls independently. */
 .language-picker{position:relative;flex-shrink:0;z-index:5}
 .language-toggle{display:flex;align-items:center;gap:9px;padding:10px 12px;background:#fff;border:1px solid var(--border);border-radius:8px;color:var(--ink);font-size:14px;max-width:210px}
 .language-toggle [data-language-label]{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -15,17 +15,18 @@
 .language-toggle:hover,.language-toggle[aria-expanded=true]{background:#f7ffdb;border-color:#b6c68f}
 .language-toggle[aria-expanded=true] .language-chevron{transform:rotate(180deg)}
 .language-toggle[aria-busy=true]{opacity:.7}
-.language-panel{position:absolute;right:0;top:calc(100% + 10px);width:480px;max-width:calc(100vw - 36px);max-height:min(780px,calc(100dvh - 115px));overflow-y:auto;overscroll-behavior:contain;background:#fff;padding:10px;border:1px solid #e8ece5;border-radius:12px;box-shadow:0 16px 48px #17251e26}
-.language-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 10px}
-.language-grid button{border:0;background:transparent;text-align:left;padding:14px 16px;min-height:50px;color:#405778;font-size:18px;line-height:1.4;overflow-wrap:anywhere}
+.language-panel{position:absolute;right:0;top:calc(100% + 8px);width:344px;max-width:calc(100vw - 48px);background:#fff;padding:8px;border:1px solid var(--border);border-radius:10px;box-shadow:0 12px 32px #17251e1a,0 2px 6px #17251e08}
+.language-heading{margin:0;padding:6px 8px 10px;font-size:12px;font-weight:600;line-height:1.5;color:var(--muted)}
+.language-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;max-height:min(280px,calc(100dvh - 210px));overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#c7d1bf transparent;scroll-padding-block:4px;padding:2px}
+.language-grid button{border:0;border-radius:5px;background:transparent;text-align:left;padding:8px;min-height:36px;color:var(--ink);font-size:14px;line-height:20px;overflow-wrap:anywhere}
 .language-grid button:hover,.language-grid button:focus-visible{background:#f5f8ed}
 .language-grid button[aria-pressed=true]{background:#f7ffd6;color:#4e6500}
 .language-grid button:focus-visible{outline-offset:-3px}
-.language-credit{font-size:11px;color:var(--muted);margin:12px 16px 4px}
+.language-credit{font-size:11px;line-height:1.5;color:var(--muted);margin:8px 0 0;padding:10px 8px 2px;border-top:1px solid var(--border)}
 .language-feedback{position:absolute;right:0;top:calc(100% + 10px);width:290px;max-width:calc(100vw - 36px);background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px;font-size:13px;box-shadow:0 8px 24px #17251e18}
 .language-feedback a{display:block;text-decoration:underline;margin-top:6px}
 .language-picker:has(.language-panel:not([hidden])) .language-feedback{display:none}
 .translation-provider{width:100%;padding-top:12px}
 @media(max-width:1100px){.site-header{gap:18px}.site-header nav{gap:18px}.edition{display:none}}
-@media(max-width:640px){.site-header{flex-wrap:wrap;gap:8px 12px;padding-block:14px}.site-header .wordmark{margin-right:auto}.site-header nav{order:3;width:100%}.site-header nav a:not(:first-child){display:block}.site-header nav a{padding-block:6px}.language-toggle{max-width:155px;padding:8px;gap:6px;font-size:13px}.language-panel{max-height:calc(100dvh - 90px)}.language-grid{gap:3px}.language-grid button{padding:12px 10px;font-size:15px}}
+@media(max-width:640px){.site-header{flex-wrap:wrap;gap:8px 12px;padding-block:14px}.site-header .wordmark{margin-right:auto}.site-header nav{order:3;width:100%}.site-header nav a:not(:first-child){display:block}.site-header nav a{padding-block:6px}.language-toggle{max-width:155px;padding:8px;gap:6px;font-size:13px}.language-grid{max-height:min(288px,calc(100dvh - 230px))}.language-grid button{min-height:44px;padding:10px 8px}}
 @media(max-width:640px){.language-picker{margin-left:auto}.language-toggle{max-width:130px}}

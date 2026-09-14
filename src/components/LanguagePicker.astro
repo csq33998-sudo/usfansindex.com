@@ -16,7 +16,8 @@ const languages = [
     <svg class="language-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m2 4 4 4 4-4"/></svg>
   </button>
   <div id="language-panel" class="language-panel" hidden>
-    <div class="language-grid" role="group" aria-label="Page language">
+    <p class="language-heading" id="language-heading">Select language</p>
+    <div class="language-grid" role="group" aria-labelledby="language-heading">
       {languages.map(([code, label]) => <button type="button" data-language={code} aria-pressed={String(code === 'en')}>{label}</button>)}
     </div>
     <p class="language-credit">Automatic translation by Google</p>
